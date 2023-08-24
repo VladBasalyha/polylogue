@@ -1,6 +1,4 @@
 <script setup>
-	import MainLayout from "./layouts/MainLayout.vue";
-
 	import { useUserStore } from "./stores/user";
 	const userStore = useUserStore();
 </script>
@@ -13,6 +11,14 @@
 				{
 					'max-h-[100vh] transition-all duration-200 visible': userStore.isMenuOverlay,
 					'max-h-0 transition-all duration-200 ease-out invisible': !userStore.isMenuOverlay,
+				},
+			]"
+		/>
+		<Modal
+			:class="[
+				{
+					'max-h-[100vh] transition-all duration-200 visible': userStore.isLogoutOverlay,
+					'max-h-0 transition-all duration-200 ease-out invisible': !userStore.isLogoutOverlay,
 				},
 			]"
 		/>
