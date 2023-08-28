@@ -1,14 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export default defineEventHandler(async (e) => {
-	const body = await readBody(e);
+export default defineEventHandler(async (event) => {
+	const body = await readBody(event);
 
-	const response = await prisma.likes.create({
+	const res = await prisma.likes.create({
 		data: {
 			userId: body.userId,
 			postId: body.postId,
 		},
 	});
-	return response;
+
+	return res;
 });

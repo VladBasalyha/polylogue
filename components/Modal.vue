@@ -1,32 +1,33 @@
+<template>
+	<div
+		id="Modal"
+		class="fixed grid place-items-center h-screen z-50 bottom-0 bg-black bg-opacity-50 backdrop-blur-md h-screen w-full"
+	>
+		<div class="bg-gray-600 w-full max-w-[300px] rounded-lg text-white border-gray-600 p-2">
+			<button
+				@click="userStore.isLogoutOverlay = false"
+				class="flex items-center justify-between text-gray-400 bg-gray-600 w-full p-3"
+			>
+				<div>Close Modal</div>
+				<Icon name="mdi:close" size="25" />
+			</button>
+			<div class="border-b border-b-gray-700 my-1" />
+			<button @click="logout()" class="flex bg-gray-600 text-gray-400 items-center justify-between bg-black w-full p-3">
+				<div>Log Out</div>
+				<Icon name="ph:sign-out" size="25" />
+			</button>
+		</div>
+	</div>
+</template>
+
 <script setup>
 	import { useUserStore } from "../stores/user";
-
 	const userStore = useUserStore();
-	// const client = useSupabaseClient();
+	const client = useSupabaseClient();
 
-	const signOut = () => {
+	const logout = () => {
 		client.auth.signOut();
 		userStore.isLogoutOverlay = false;
 		return navigateTo("/");
 	};
 </script>
-
-<template>
-	<div
-		id="Modal"
-		class="fixed grid place-items-center h-screen z-50 bottom-0 bg-gray-700 bg-opacity-40 backdrop-blur-md h-screen w-full"
-	>
-		<div class="bg-gray-700 w-full max-w-300px rounded-lg text-gray-300 border border-gray-300 p-4">
-			<button @click="userStore.isLogoutOverlay" class="flex items-center justify-between bg-gray-700 w-full p-3">
-				<div>Close window</div>
-				<Icon name="ic:twotone-cancel" size="30" />
-			</button>
-
-			<div class="border-b border-b-gray-700 my-2"></div>
-			<button class="flex items-center justify-between bg-gray-700 w-full p-4">
-				<div>Sign Out</div>
-				<Icon name="solar:exit-bold-duotone" size="30" />
-			</button>
-		</div>
-	</div>
-</template>
