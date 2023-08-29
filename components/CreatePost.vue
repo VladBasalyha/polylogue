@@ -79,6 +79,7 @@
 
 	const client = useSupabaseClient();
 	const user = useSupabaseUser();
+	console.log(user);
 
 	let text = ref(null);
 	let isLoading = ref(false);

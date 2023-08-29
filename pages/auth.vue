@@ -15,13 +15,14 @@
 							GITHUB
 						</div>
 					</button>
-					<button class="flex items-center" @click="login('google')">
-						<div class="flex flex-col items-center gap-2 justify-center">
-							<Icon name="ci:google" size="40" />
-							GOOGLE
-						</div>
-					</button>
 				</div>
+
+				<button class="flex items-center" @click="login('google')">
+					<div class="flex flex-col items-center gap-2 justify-center">
+						<Icon name="ci:google" size="40" />
+						GOOGLE
+					</div>
+				</button>
 			</div>
 		</div>
 	</div>
