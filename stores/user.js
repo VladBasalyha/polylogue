@@ -10,9 +10,13 @@ export const useUserStore = defineStore("user", {
 
 	actions: {
 		async getAllPosts() {
-			let res = await useFetch("/api/get-all-posts");
-			this.posts = res.data;
-			return res.data;
+			try {
+				let res = await useFetch("/api/get-all-posts");
+				this.posts = res.data;
+				return res.data;
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 });
