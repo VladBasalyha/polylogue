@@ -4,6 +4,13 @@ export default defineNuxtConfig({
 	modules: ["nuxt-icon", "@nuxtjs/tailwindcss", "@nuxtjs/supabase", "@pinia/nuxt", "@vite-pwa/nuxt"],
 	runtimeConfig: {
 		public: {
+			supabase: {
+				redirect: true,
+				redirectOptions: {
+					login: "/auth",
+					exclude: ["/"],
+				},
+			},
 			bucketUrl: process.env.BUCKET_URL,
 		},
 	},
